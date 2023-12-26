@@ -1,0 +1,37 @@
+type Query {
+    getCarByMode(model: String) : [CarDTO]
+    getCarByModeAndPrice(model:String, price:Float): CarDTO
+}
+
+type CarDTO {
+    model : String,
+    color : String,
+    matricul : String,
+    price : String
+}
+
+type Mutation {
+    saveCar(car : CarRequest): CarDTO
+    deleteCar(id :ID ) : CarDTO
+}
+
+input CarRequest{
+    model:String,
+    color:String,
+    matricul:String,
+    price:String
+}
+
+mutation {
+    saveCar(car: {
+        color: "Red",
+        model : "BMW",
+        matricul: "10E10",
+        price: "10000"
+    },
+) {     color
+        model
+        matricul
+        price
+    } }
+
